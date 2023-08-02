@@ -1,0 +1,35 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.navbar {
+    background-color: rgb(24, 23, 23);
+    color: white;
+    position: fixed;
+    width: 100%;
+}
+
+.nav-item a {
+    text-decoration: none !important;
+    list-style: none;
+}
+
+.rightNav {
+    width: 26%;
+}
+
+.middleNav {
+    margin-top: 50px;
+}
+
+.leftNav {
+    float: left;
+    width: 25%;
+}
+
+.card {
+    background-color: rgb(17,19,19);
+    margin-bottom: 15px;
+    border-radius: 25px;
+}

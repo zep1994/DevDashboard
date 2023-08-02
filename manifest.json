@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Dev Dashboard",
+    "version": "1.0",
+    "description": "Create your own Development Dashboard",
+    "action": {
+      "default_popup": "index.html"
+    },
+    "chrome_url_overrides": {
+      "newtab": "index.html"
+    },
+    "permissions": ["activeTab"]
+  }
+  

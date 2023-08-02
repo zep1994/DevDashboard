@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="middleNav col-6" id="newsContainer">
+        <!-- Results will be displayed here -->
+    </div>
+
+    
+
+<!-- Add your JavaScript code below -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cheerio"></script>
+<script>
+    // Function to fetch and display top JavaScript articles from Medium
+    async function fetchAndDisplayArticles() {
+        try {
+            const mediumURL = 'https://medium.com/tag/javascript';
+            const response = await axios.get(mediumURL);
+            const htmlContent = response.data;
+            const $ = cheerio.load(htmlContent);
+
+            // Find article elements
+            const articleElements = $('div.postArticle');
+
+            // Clear previous results
+            const newsContainer = document.getElementById('newsContainer');
+            newsContainer.innerHTML = '';
+
+            // Display each article
+            articleElements.slice(0, 25).each((index, element) => {
+                const articleTitle = $(element).find('h3.graf--title').text();
+                const articleDescription = $(element).find('div.postArticle-content').text();
+                const articleUrl = $(element).find('a[data-action="open-post"]').attr('href');
+
+                const articleElement = document.createElement('div');
+                articleElement.innerHTML = `<h3>${index + 1}. ${articleTitle}</h3>
+                                            <p>${articleDescription}</p>
+                                            <a href="https://medium.com${articleUrl}" target="_blank">Read More</a><hr>`;
+                newsContainer.appendChild(articleElement);
+            });
+        } catch (error) {
+            console.error('Error fetching articles:', error);
+        }
+    }
+
+    // Call the function to fetch and display articles on page load
+    fetchAndDisplayArticles();
+</script>
+
+</body>
+</html>
