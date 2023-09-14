@@ -4,10 +4,10 @@
     "version": "1.0",
     "description": "Create your own Development Dashboard",
     "action": {
-      "default_popup": "index.html"
+      "default_popup": "main.html"
     },
     "chrome_url_overrides": {
-      "newtab": "index.html"
+      "newtab": "main.html"
     },
     "permissions": ["activeTab"]
   }
